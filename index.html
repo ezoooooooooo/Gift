@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To Dareen ❤️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 3em;
+    }
+
+    h2 {
+      font-family: 'Comic Neue', cursive;
+    }
+
+    .heart {
+      color: #ff4d6d;
+    }
+
+    .section {
+      margin: 50px 20px;
+    }
+
+    .cats, .doritos, .meat {
+      width: 60px;
+      position: absolute;
+      animation: floaty 6s infinite ease-in-out;
+      z-index: 10;
+    }
+
+    .cats {
+      top: 100px;
+      left: 10%;
+    }
+
+    .doritos {
+      top: 200px;
+      right: 10%;
+    }
+    
+    .meat {
+      top: 150px;
+      right: 40%;
+      font-size: 50px;
+    }
+
+    @keyframes floaty {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    .msg-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      font-size: 1.2em;
+      backdrop-filter: blur(8px);
+    }
+
+    .shows {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .show-item {
+      position: relative;
+      width: 110px;
+      cursor: pointer;
+    }
+
+    .show-item img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .show-item:hover img {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .show-desc {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      width: 200px;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      top: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: none;
+    }
+
+    iframe {
+      border-radius: 12px;
+      margin-top: 20px;
+      max-width: 100%;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-bottom: 20px;
+      font-size: 0.9em;
+      color: #eee;
+    }
+
+    .clickable {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .clickable:hover {
+      transform: scale(1.1);
+    }
+
+    /* Animated Sunset Background */
+    .sunset-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      background: linear-gradient(to top, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+      animation: sunsetAnimation 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes sunsetAnimation {
+      0% { background: linear-gradient(to top, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); }
+      50% { background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); }
+      100% { background: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%); }
+    }
+
+    /* Sun/Moon overlay */
+    .sun {
+      position: fixed;
+      bottom: 10vh;
+      left: 15vw;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, #ffdc80 30%, rgba(255, 220, 128, 0) 70%);
+      border-radius: 50%;
+      z-index: -1;
+      animation: sunGlow 10s infinite alternate ease-in-out;
+    }
+
+    @keyframes sunGlow {
+      0% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 0.8; transform: scale(1); }
+    }
+
+    /* Floating hearts and stars */
+    .floating-object {
+      position: fixed;
+      font-size: 1.5rem;
+      animation: float 15s linear infinite;
+      opacity: 0.8;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(110vh) rotate(0deg); }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0.3; }
+    }
+
+    /* Cat rain emoji */
+    .cat-emoji {
+      position: fixed;
+      font-size: 2rem;
+      animation: catFall 3s linear forwards;
+      z-index: 5;
+    }
+
+    @keyframes catFall {
+      0% { transform: translateY(-50px); opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    /* Shooting star */
+    .shooting-star {
+      position: fixed;
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%);
+      box-shadow: 0 0 10px 2px white;
+      border-radius: 100px;
+      transform: rotate(45deg);
+      z-index: 3;
+      opacity: 0;
+    }
+
+    @keyframes shoot {
+      0% { transform: translateX(-200px) translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateX(calc(100vw + 300px)) translateY(300px) rotate(45deg); opacity: 0; }
+    }
+
+    /* Mini buttons section */
+    .mini-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 20px auto;
+      max-width: 500px;
+    }
+
+    .mini-button {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 20px;
+      margin: 5px;
+      font-family: 'Quicksand', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .mini-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+
+    /* Quiz section */
+    .quiz-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 20px;
+      display: none;
+    }
+
+    .quiz-question {
+      margin: 15px 0;
+      text-align: left;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .quiz-option {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: left;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .quiz-option:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .quiz-result {
+      margin-top: 20px;
+      font-size: 1.2em;
+      display: none;
+    }
+
+    /* Friendship counter */
+    .friendship-counter {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      border-radius: 15px;
+      padding: 10px 20px;
+      margin: 20px auto;
+      max-width: 300px;
+      font-size: 1.1em;
+    }
+
+    /* Sparkle animation */
+    @keyframes sparkle {
+      0%, 100% { transform: scale(0); opacity: 0; }
+      50% { transform: scale(1); opacity: 1; }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, white 10%, transparent 70%);
+      border-radius: 50%;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 30px;
+      }
+      
+      .section {
+        margin: 30px 10px;
+      }
+      
+      .msg-box {
+        max-width: 90%;
+        font-size: 1em;
+      }
+      
+      .shows {
+        gap: 10px;
+      }
+      
+      .show-item {
+        width: 90px;
+      }
+      
+      .show-desc {
+        width: 160px;
+        font-size: 12px;
+      }
+      
+      .cats {
+        width: 50px;
+        top: 80px;
+        left: 5%;
+      }
+      
+      .doritos {
+        width: 50px;
+        top: 160px;
+        right: 5%;
+      }
+      
+      .quiz-container, .mini-button {
+        max-width: 90%;
+      }
+      
+      iframe {
+        width: 90%;
+        height: 300px;
+      }
+      
+      .sun {
+        width: 80px;
+        height: 80px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+      }
+      
+      .show-item {
+        width: 80px;
+      }
+      
+      .show-desc {
+        width: 140px;
+        font-size: 11px;
+      }
+      
+      .cats, .doritos {
+        width: 40px;
+      }
+      
+      iframe {
+        height: 250px;
+      }
+    }
+
+    /* Spotify playlist styling */
+    .spotify-container {
+      margin: 40px auto;
+      max-width: 600px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      backdrop-filter: blur(10px);
+    }
+
+    .spotify-container iframe {
+      border-radius: 12px;
+      width: 100%;
+      margin: 0;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .spotify-container {
+        max-width: 90%;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sunset-bg"></div>
+  <div class="sun"></div>
+
+  <h1>Hey دارين أشرف زهرالدين علي زهرالدين جبريل برخوت
+   <span class="heart clickable" onclick="triggerCatRain()">❤️</span></h1>
+  <p>Here's a little something full of things you love</p>
+
+  <div class="friendship-counter">
+    Friends since <span id="days-counter">0</span> days!
+    <br>
+    <span id="friendship-date">5/14/2023</span>
+  </div>
+
+  <img src="https://media1.tenor.com/m/SYDfglE66zQAAAAd/sweet-kitty.gif" alt="cat" class="cats clickable" onclick="showMessage('بومر قد كدة'); triggerCatRain();">
+  <img src="Flamin hot Doritos sad cat.jpeg" alt="doritos" class="doritos clickable" onclick="showMessage('انا ابوها')">
+  <div class="meat clickable" onclick="showMessage('لحمة لحمة لحمة')">🥩</div>
+
+  <div class="section msg-box" id="messageBox">
+    Click the cat, Doritos, or meat for a surprise!
+  </div>
+
+  <div class="section">
+    <div class="shows">
+      <div class="show-item" onclick="showShowInfo(this, 'In a dying world, one man\'s journey through space and time proves that love transcends dimensions.')">
+        <img src="download.jpeg" alt="Interstellar" title="Interstellar">
+        <div class="show-desc">In a dying world, one man's journey through space and time proves that love transcends dimensions.</div>
+      </div>
+      <div class="show-item" onclick="showShowInfo(this, 'If you win, you live. If you lose, you die. If you don\'t fight, you can\'t win!')">
+        <img src="@jeanneismydrug.jpeg" alt="Attack on Titan" title="AOT">
+        <div class="show-desc">If you win, you live. If you lose, you die. If you don't fight, you can't win!</div>
+      </div>
+      <div class="show-item" onclick="showShowInfo(this, 'I want to live! I want to be me!')">
+        <img src="peace and love on the planet earth.jpeg" alt="Steven Universe" title="Steven Universe">
+        <div class="show-desc">I want to live! I want to be me!</div>
+      </div>
+      <div class="show-item" onclick="openRandomGumballClip()">
+        <img src="671fb18b-50a0-4bd5-bf56-0faf52173106.jpeg" alt="Gumball" title="Gumball">
+        <div class="show-desc">Click for a random Gumball clip!</div>
+      </div>
+      <!-- Added New Posters -->
+      <div class="show-item" onclick="showShowInfo(this, 'Stay hydrated.')">
+        <img src="Succession _ Kendall Roy.jpeg" alt="succession" title="succession">
+        <div class="show-desc">Stay hydrated.</div>
+      </div>
+      <div class="show-item" onclick="showShowInfo(this, 'Robot sound')">
+        <img src="Wall-e _3 Eve.jpeg" alt="WALL-E" title="WALL-E">
+        <div class="show-desc">Robot sound Robot sound</div>
+      </div>
+      <div class="show-item" onclick="showShowInfo(this, 'The greatest glory in living lies not in never falling, but in rising every time we fall.')">
+        <img src="Spirited Away, _Sen to Chihiro no kamikakushi_ (2001) by Hayao Miyazaki.jpeg" alt="Spirited Away" title="Spirited Away">
+        <div class="show-desc">The greatest glory in living lies not in never falling, but in rising every time we fall.</div>
+      </div>
+      <div class="show-item" onclick="showShowInfo(this, 'Your name is your identity.')">
+        <img src="Your Name (Kimi no na wa).jpeg" alt="Your Name" title="Your Name">
+        <div class="show-desc">Your name is your identity.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="mini-buttons">
+      <button class="mini-button" onclick="showSparkles(event); toggleQuiz()">Cat Quiz</button>
+    </div>
+  </div>
+
+  <div class="quiz-container" id="catQuiz">
+    <h3>What Kind of Cat Are You?</h3>
+    <div id="quiz-content">
+      <div class="quiz-question" id="question1">
+        <p>1. What's your ideal Saturday?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="saveAnswer(1, 'A')">Snuggled under blankets all day</button>
+          <button class="quiz-option" onclick="saveAnswer(1, 'B')">Exploring new places</button>
+          <button class="quiz-option" onclick="saveAnswer(1, 'C')">Mix of socializing and relaxing</button>
+        </div>
+      </div>
+      <div class="quiz-question" id="question2" style="display: none;">
+        <p>2. Pick your favorite snack:</p>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="saveAnswer(2, 'A')">Something warm and comforting</button>
+          <button class="quiz-option" onclick="saveAnswer(2, 'B')">Whatever's most exciting</button>
+          <button class="quiz-option" onclick="saveAnswer(2, 'C')">Something sweet</button>
+        </div>
+      </div>
+      <div class="quiz-question" id="question3" style="display: none;">
+        <p>3. How do you react to new people?</p>
+        <div class="quiz-options">
+          <button class="quiz-option" onclick="saveAnswer(3, 'A')">Hide until I know they're safe</button>
+          <button class="quiz-option" onclick="saveAnswer(3, 'B')">Immediately investigate them</button>
+          <button class="quiz-option" onclick="saveAnswer(3, 'C')">Watch from a distance first</button>
+        </div>
+      </div>
+    </div>
+    <div class="quiz-result" id="quizResult"></div>
+  </div>
+
+  <div class="section spotify-container" id="spotifyContainer">
+    <!-- Spotify embed will be inserted here by JavaScript -->
+  </div>
+
+  <div class="section msg-box">
+    "You're not a boomer... you're <em>my</em> boomer "
+  </div>
+
+  <footer>
+    Made with love by Ezoo 💻❤️
+  </footer>
+
+  <script>
+    const messages = [
+      "انتي مجنونة",
+      "دارين أشرف زهرالدين علي زهرالدين جبريل برخوت",
+      "بومر قد كدة ",
+      "انا ابوها",
+      "Meat lover forever! 🥩❤️"
+    ];
+
+    // New collection of Gumball clips
+    const gumballClips = [
+      "https://youtu.be/5PwajYn29as?si=vGygeLWg1B-iI70K",
+      "https://youtu.be/HLBGiNqrViI?si=bCqDX5Kt-f3RHMEI",
+      "https://youtu.be/UHJe26oZnjk?si=2tEQ83o08cYQ62eP",
+      "https://youtu.be/ggeryHx3fjg?si=178cwlm7wGZcHZT5",
+      "https://youtube.com/shorts/5F54UVHrmKg?si=16OjT8T20deI3EER",
+      "https://youtu.be/n9tY-JpbVxA?si=ovmc3hVEXeDDNEtP",
+      "https://youtu.be/s6yCS3CnZDk?si=UwZIPgDOksYww6tj"
+    ];
+
+    // Cat quiz answers
+    let quizAnswers = {};
+    const quizResults = {
+      "AAA": "You're a Sleepy Snuggle Floof! 😴🐈 Content to spend your days napping in the warmest spots and purring when petted.",
+      "AAB": "You're a Shy Sweetheart! 🥺🐈 Cautious but incredibly loving once you feel safe.",
+      "AAC": "You're a Thoughtful Observer! 👀🐈 You watch the world with quiet wisdom before making your move.",
+      "ABA": "You're a Cozy Explorer! 🏠🐈 You love adventures but always return to your comfort zone.",
+      "ABB": "You're a Curious Adventurer! 🔍🐈 Always into something new but love a good snuggle too.",
+      "ABC": "You're a Balanced Beauty! ⚖️🐈 Perfect mix of playfulness and relaxation.",
+      "ACA": "You're a Sweet Dreamer! 💭🐈 Your imagination is as big as your heart.",
+      "ACB": "You're a Social Butterfly Cat! 🦋🐈 You love people almost as much as treats.",
+      "ACC": "You're a Gentle Soul! 💖🐈 Kind, loving, and always there for cuddles.",
+      "BAA": "You're an Energetic Homebody! 🏃‍♀️🏠🐈 Zooming around your territory.",
+      "BAB": "You're a Playful Spirit! 🎮🐈 Always ready for games and mischief.",
+      "BAC": "You're a Watchful Guardian! 👮‍♀️🐈 Protecting your loved ones with playful energy.",
+      "BBA": "You're an Adventure Cat! 🗺️🐈 Bold, brave, and always ready for the next expedition.",
+      "BBB": "You're a Wild Child! 🌪️🐈 Full of energy and constantly exploring!",
+      "BBC": "You're a Curious Explorer! 🔎🐈 New things excite you, and you must investigate everything!",
+      "BCA": "You're a Social Sweetheart! 💕🐈 Energetic with friends but enjoy your alone time too.",
+      "BCB": "You're a Party Animal! 🎉🐈 Life of the party and always making friends.",
+      "BCC": "You're a Friendly Feline! 👋🐈 Social, sweet, and always up for adventure.",
+      "CAA": "You're a Balanced Homebody! 🏠💫🐈 Equal parts calm and playful.",
+      "CAB": "You're a Selective Socializer! 👥🐈 You choose your friends carefully but love them deeply.",
+      "CAC": "You're a Thoughtful Friend! 💭🐈 You take your time but give your whole heart.",
+      "CBA": "You're a Social Adventurer! 🌍🐈 Love exploring with friends by your side.",
+      "CBB": "You're an Outgoing Explorer! 🗣️🐈 Friendly to everyone and curious about everything.",
+      "CBC": "You're a Friendly Wanderer! 🚶‍♀️🐈 Always on the move but never missing a chance to make friends.",
+      "CCA": "You're a Sweet Companion! 🍯🐈 The perfect mix of independence and affection.",
+      "CCB": "You're a Social Butterfly! 🦋🐈 Making friends everywhere you go.",
+      "CCC": "You're a Perfect Balance! ☯️🐈 Equal parts adventurous, social, and sweet - the ideal cat!"
+    };
+
+    // Floating objects
+    const floatingObjects = ['❤', '✨', '⭐', '🌟', '💕', '💫'];
+    
+    // Calculate friendship duration
+    function updateFriendshipCounter() {
+      const startDate = new Date('2023-05-14');
+      const today = new Date();
+      const diffTime = Math.abs(today - startDate);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById('days-counter').textContent = diffDays;
+    }
+
+    function showMessage(msg) {
+      const box = document.getElementById("messageBox");
+      if (msg) {
+        box.textContent = msg;
+      } else {
+        const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+        box.textContent = randomMsg;
+      }
+      showSparkles(box);
+    }
+
+    function showShowInfo(element, text) {
+      const allDescs = document.querySelectorAll('.show-desc');
+      allDescs.forEach(desc => desc.style.display = 'none');
+      
+      const desc = element.querySelector('.show-desc');
+      if (desc.style.display === 'block') {
+        desc.style.display = 'none';
+      } else {
+        desc.style.display = 'block';
+      }
+    }
+
+    // Function to open a random Gumball clip
+    function openRandomGumballClip() {
+      const randomClip = gumballClips[Math.floor(Math.random() * gumballClips.length)];
+      window.open(randomClip, '_blank');
+    }
+
+    // Trigger cat emoji rain
+    function triggerCatRain() {
+      for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+          const cat = document.createElement('div');
+          cat.className = 'cat-emoji';
+          cat.textContent = ['😸', '😻', '😺', '😽', '🐱'][Math.floor(Math.random() * 5)];
+          cat.style.left = Math.random() * 100 + 'vw';
+          document.body.appendChild(cat);
+          setTimeout(() => cat.remove(), 3000);
+        }, i * 100);
+      }
+    }
+
+    // Quiz functions
+    function toggleQuiz() {
+      const quiz = document.getElementById('catQuiz');
+      if (quiz.style.display === 'block') {
+        quiz.style.display = 'none';
+      } else {
+        quiz.style.display = 'block';
+        // Reset quiz
+        document.getElementById('question1').style.display = 'block';
+        document.getElementById('question2').style.display = 'none';
+        document.getElementById('question3').style.display = 'none';
+        document.getElementById('quizResult').style.display = 'none';
+        quizAnswers = {};
+      }
+    }
+
+    function saveAnswer(questionNum, answer) {
+      quizAnswers[questionNum] = answer;
+      
+      // Hide current question
+      document.getElementById('question' + questionNum).style.display = 'none';
+      
+      // Show next question or result
+      if (questionNum < 3) {
+        document.getElementById('question' + (questionNum + 1)).style.display = 'block';
+      } else {
+        showQuizResult();
+      }
+    }
+
+    function showQuizResult() {
+      const resultKey = quizAnswers[1] + quizAnswers[2] + quizAnswers[3];
+      const result = quizResults[resultKey] || "You're a Curious Sleepy Floof! 😻";
+      
+      const resultElement = document.getElementById('quizResult');
+      resultElement.innerHTML = result;
+      resultElement.style.display = 'block';
+      
+      // Trigger cat rain for celebration
+      triggerCatRain();
+    }
+
+    // Create sparkle effect
+    function showSparkles(event) {
+      let x, y;
+      
+      if (event.clientX) {
+        // If it's a mouse event
+        x = event.clientX;
+        y = event.clientY;
+      } else {
+        // If it's an element
+        const rect = event.getBoundingClientRect();
+        x = rect.left + rect.width / 2;
+        y = rect.top + rect.height / 2;
+      }
+      
+      for (let i = 0; i < 10; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = (x - 10 + Math.random() * 20) + 'px';
+        sparkle.style.top = (y - 10 + Math.random() * 20) + 'px';
+        sparkle.style.animation = `sparkle ${0.5 + Math.random() * 0.5}s forwards`;
+        
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1000);
+      }
+    }
+
+    // Create shooting star animation
+    function createShootingStar() {
+      const star = document.createElement('div');
+      star.className = 'shooting-star';
+      
+      // Random position at top of screen
+      const startX = -200;
+      const startY = Math.random() * window.innerHeight * 0.7;
+      
+      star.style.left = startX + 'px';
+      star.style.top = startY + 'px';
+      star.style.animation = `shoot ${1 + Math.random() * 2}s forwards`;
+      
+      document.body.appendChild(star);
+      setTimeout(() => star.remove(), 3000);
+    }
+
+    // Create floating hearts/stars
+    function createFloatingObject() {
+      const obj = document.createElement('div');
+      obj.className = 'floating-object';
+      obj.textContent = floatingObjects[Math.floor(Math.random() * floatingObjects.length)];
+      obj.style.left = Math.random() * 100 + 'vw';
+      obj.style.animationDuration = (10 + Math.random() * 10) + 's';
+      document.body.appendChild(obj);
+      setTimeout(() => obj.remove(), 15000);
+    }
+
+    // Initialize everything when page loads
+    window.onload = function() {
+      // Update friendship counter
+      updateFriendshipCounter();
+      
+      // Create floating objects periodically
+      setInterval(createFloatingObject, 2000);
+      
+      // Create shooting stars periodically
+      setInterval(createShootingStar, 15000); // Every 15 seconds
+      // Create first shooting star shortly after page load
+      setTimeout(createShootingStar, 3000);
+      
+      // Load Spotify playlist with timestamp to prevent caching
+      const spotifyContainer = document.getElementById('spotifyContainer');
+      const timestamp = new Date().getTime();
+      spotifyContainer.innerHTML = `
+        <iframe 
+          style="border-radius:12px" 
+          src="https://open.spotify.com/embed/playlist/1hPMYEoqCefSEGKujph0R9?utm_source=generator&t=${timestamp}" 
+          width="100%" 
+          height="352" 
+          frameBorder="0" 
+          allowfullscreen="" 
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+          loading="lazy">
+        </iframe>
+      `;
+    };
+  </script>
+</body>
+</html>
